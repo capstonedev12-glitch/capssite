@@ -167,6 +167,17 @@ export default function Home() {
             <p className="text-sm text-muted-foreground mt-4">
               No credit card required • 14-day free trial • Cancel anytime
             </p>
+            <div className="mt-10 relative">
+              <div className="absolute inset-0 -z-10 blur-3xl bg-primary/20 rounded-full" />
+              <div className="mx-auto max-w-7xl rounded-xl border border-border bg-card shadow-2xl overflow-hidden h-full">
+                <img
+                  src="/dashboard.png"
+                  alt="Caps CRM Dashboard Preview"
+                  className="w-full h-full"
+                  data-testid="image-dashboard-preview"
+                />
+              </div>
+            </div>
           </div>
         </div>
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(45%_40%_at_50%_60%,hsl(var(--primary)/0.12),transparent)]" />
@@ -264,7 +275,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* How It Works */}
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-16">
@@ -306,9 +316,7 @@ export default function Home() {
                 {[
                   "256-bit AES encryption for all data",
                   "PCI-DSS compliant payment processing",
-                  "SOC 2 Type II certification ready",
-                  "Multi-tenant data isolation",
-                  "Automated daily backups with disaster recovery",
+                  "SOC 2 Type II certification ready", 
                   "Role-based access controls",
                 ].map((item, index) => (
                   <li key={index} className="flex items-center gap-2 text-sm">
@@ -378,7 +386,7 @@ export default function Home() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-20 bg-primary">
+      <section className="py-20 bg-gradient-to-r from-orange-400 to-blue-400">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary-foreground" data-testid="text-final-cta-headline">
             Ready to Transform Your Auto Transport Business?

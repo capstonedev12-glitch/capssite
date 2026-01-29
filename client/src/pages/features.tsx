@@ -15,6 +15,18 @@ import {
   CheckCircle,
 } from "lucide-react";
 
+
+const featureVisuals = [
+  "/vectors/lead-management.jpg",
+  "/vectors/workflow.jpg",
+  "/vectors/payment.jpg",
+  "/vectors/notifications.jpg",
+  "/vectors/leads-api.jpg",
+  "/vectors/search.png",
+  "/vectors/data-compliance.jpg", 
+];
+
+
 const features = [
   {
     id: "lead-management",
@@ -135,23 +147,23 @@ const features = [
     whyItMatters: "Data protection regulations carry serious penalties for non-compliance. Your customers trust you with their personal information, and regulators expect you to protect it.",
     howItHelps: "Handle data subject requests with a few clicks, maintain complete audit trails of consent and data processing, and ensure your auto transport business stays on the right side of privacy laws.",
   },
-  {
-    id: "data-security",
-    icon: Shield,
-    title: "Data Security",
-    tagline: "Enterprise-grade protection for your business data",
-    description: "Your data is protected by multiple layers of security including encryption, access controls, and continuous monitoring. Sleep soundly knowing your business is safe.",
-    whatItDoes: [
-      "256-bit AES encryption for data at rest and in transit",
-      "Role-based access control (RBAC) with granular permissions",
-      "Two-factor authentication (2FA) for all users",
-      "IP whitelisting and session management",
-      "Activity logging and security audit trails",
-      "Automated threat detection and response",
-    ],
-    whyItMatters: "Auto transport businesses handle sensitive customer data including addresses, phone numbers, and payment information. A data breach can destroy customer trust and your reputation.",
-    howItHelps: "Every piece of data in Caps CRM is encrypted. Access is strictly controlled based on user roles. Suspicious activity triggers immediate alerts. Your customers' data is as secure as your biggest competitors'.",
-  },
+  // {
+  //   id: "data-security",
+  //   icon: Shield,
+  //   title: "Data Security",
+  //   tagline: "Enterprise-grade protection for your business data",
+  //   description: "Your data is protected by multiple layers of security including encryption, access controls, and continuous monitoring. Sleep soundly knowing your business is safe.",
+  //   whatItDoes: [
+  //     "256-bit AES encryption for data at rest and in transit",
+  //     "Role-based access control (RBAC) with granular permissions",
+  //     "Two-factor authentication (2FA) for all users",
+  //     "IP whitelisting and session management",
+  //     "Activity logging and security audit trails",
+  //     "Automated threat detection and response",
+  //   ],
+  //   whyItMatters: "Auto transport businesses handle sensitive customer data including addresses, phone numbers, and payment information. A data breach can destroy customer trust and your reputation.",
+  //   howItHelps: "Every piece of data in Caps CRM is encrypted. Access is strictly controlled based on user roles. Suspicious activity triggers immediate alerts. Your customers' data is as secure as your biggest competitors'.",
+  // },
 ];
 
 export default function Features() {
@@ -239,17 +251,15 @@ export default function Features() {
                   </div>
                   
                   <div className={index % 2 === 1 ? "lg:order-1" : ""}>
-                    <Card>
-                      <CardHeader>
-                        <CardTitle className="text-lg">Why It Matters</CardTitle>
-                      </CardHeader>
-                      <CardContent>
-                        <p className="text-muted-foreground text-sm mb-6">{feature.whyItMatters}</p>
-                        <h4 className="font-semibold mb-2">How It Helps Auto Transport Businesses</h4>
-                        <p className="text-muted-foreground text-sm">{feature.howItHelps}</p>
-                      </CardContent>
-                    </Card>
+                    <div className="rounded-xl border bg-card p-4 flex items-center justify-center hover:shadow-lg transition">
+                      <img
+                        src={featureVisuals[index]} // single visual
+                        alt={`${feature.title} visual`}
+                        className="w-full h-auto object-contain" // full width, maintain aspect ratio
+                      />
+                    </div>
                   </div>
+
                 </div>
                 {index < features.length - 1 && <div className="border-t mt-24" />}
               </div>
@@ -259,7 +269,7 @@ export default function Features() {
       </section>
 
       {/* CTA */}
-      <section className="py-20 bg-primary">
+      <section className="py-20 bg-gradient-to-r from-blue-400 to-orange-400">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary-foreground" data-testid="text-features-cta-headline">
             Ready to Experience These Features?

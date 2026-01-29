@@ -42,25 +42,25 @@ const values = [
 
 const roadmapItems = [
   {
-    quarter: "Q1 2025",
+    quarter: "Q1 2026",
     title: "Enhanced Mobile Experience",
     description: "Full-featured mobile app for iOS and Android with offline capabilities",
     status: "in-progress",
   },
   {
-    quarter: "Q2 2025",
+    quarter: "Q2 2026",
     title: "AI-Powered Insights",
     description: "Machine learning predictions for lead scoring and demand forecasting",
     status: "planned",
   },
   {
-    quarter: "Q3 2025",
+    quarter: "Q3 2026",
     title: "Advanced Carrier Network",
     description: "Expanded carrier database with real-time capacity and rating system",
     status: "planned",
   },
   {
-    quarter: "Q4 2025",
+    quarter: "Q4 2026",
     title: "Enterprise Features",
     description: "Multi-location management, custom workflows, and white-label options",
     status: "planned",

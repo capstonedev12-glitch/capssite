@@ -25,10 +25,9 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center gap-2 mb-4" data-testid="link-footer-logo">
-              <div className="flex h-9 w-9 items-center justify-center rounded-md bg-primary">
-                <Truck className="h-5 w-5 text-primary-foreground" />
+              <div className="flex w-32 items-center justify-center rounded-md">
+                <img src="/caps-logo.png"></img>
               </div>
-              <span className="text-xl font-bold tracking-tight">Caps CRM</span>
             </Link>
             <p className="text-muted-foreground mb-6 max-w-sm" data-testid="text-footer-description">
               The all-in-one CRM platform built specifically for auto transport businesses. 
