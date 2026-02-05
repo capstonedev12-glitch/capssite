@@ -1,314 +1,306 @@
 import { Link } from "wouter";
 import { Layout } from "@/components/layout";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+  CardDescription,
+} from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
   Check,
   X,
   ArrowRight,
   HelpCircle,
-  Zap,
   Users,
   Building2,
 } from "lucide-react";
-
+import { useState } from "react";
 const plans = [
   {
-    name: "Starter",
-    description: "Perfect for solo brokers and small operations",
-    price: 49,
-    icon: Zap,
+    name: "Agent",
+    description: "For dispatchers & sales agents",
+    price: 25,
+    icon: Users,
     popular: false,
     features: [
-      { name: "Up to 3 users", included: true },
-      { name: "500 leads per month", included: true },
-      { name: "Lead management", included: true },
-      { name: "Lead workflow pipeline", included: true },
-      { name: "Basic reporting", included: true },
-      { name: "Email support", included: true },
-      { name: "Payment integration (Authorize.net)", included: false },
-      { name: "Central Dispatch integration", included: false },
-      { name: "Leads API access", included: false },
-      { name: "AI Chatbot", included: false },
-      { name: "Phone number validator", included: false },
-      { name: "Custom branding", included: false },
+      { name: "Access own leads only", included: true },
+      { name: "View & create own quotes and orders", included: true },
+      { name: "Cannot assign leads", included: false },
+      { name: "Cannot charge payments", included: false },
+      { name: "Central Dispatch posting", included: true },
+      { name: "No system-wide notifications", included: false },
+      { name: "No change logs access", included: false },
+      { name: "No admin permissions", included: false },
     ],
   },
   {
-    name: "Professional",
-    description: "For growing teams that need more power",
-    price: 149,
-    icon: Users,
-    popular: true,
-    features: [
-      { name: "Up to 10 users", included: true },
-      { name: "2,500 leads per month", included: true },
-      { name: "Lead management", included: true },
-      { name: "Lead workflow pipeline", included: true },
-      { name: "Advanced reporting & analytics", included: true },
-      { name: "Priority email & phone support", included: true },
-      { name: "Payment integration (Authorize.net & Clover)", included: true },
-      { name: "Central Dispatch integration", included: true },
-      { name: "Leads API access", included: true },
-      { name: "AI Chatbot", included: true },
-      { name: "Phone number validator", included: true },
-      { name: "Custom branding", included: false },
-    ],
-  },
-  {
-    name: "Enterprise",
-    description: "For large operations with custom needs",
-    price: null,
+    name: "Super Admin",
+    description: "Full system control for owners & managers",
+    price: 100,
     icon: Building2,
     popular: false,
     features: [
-      { name: "Unlimited users", included: true },
-      { name: "Unlimited leads", included: true },
-      { name: "Lead management", included: true },
-      { name: "Lead workflow pipeline", included: true },
-      { name: "Custom reporting & dashboards", included: true },
-      { name: "Dedicated account manager", included: true },
-      { name: "All payment integrations", included: true },
-      { name: "Central Dispatch integration", included: true },
-      { name: "Leads API access", included: true },
-      { name: "AI Chatbot with custom training", included: true },
-      { name: "Phone number validator", included: true },
-      { name: "Custom branding & white-label", included: true },
+      { name: "Access all leads, quotes & orders", included: true },
+      { name: "Assign & manage leads", included: true },
+      { name: "Charge payments (Authorize.Net & Clover)", included: true },
+      { name: "Central Dispatch post / unpost", included: true },
+      { name: "Central Dispatch activity notifications", included: true },
+      { name: "System-wide change logs", included: true },
+      { name: "Manage all users & permissions", included: true },
+      { name: "Full admin & configuration access", included: true },
     ],
   },
 ];
-
 const faqs = [
   {
-    question: "Can I change plans later?",
-    answer: "Yes, you can upgrade or downgrade your plan at any time. When you upgrade, you'll be prorated for the remainder of your billing period. When you downgrade, your new rate takes effect at the next billing cycle.",
+    question: "Can I upgrade an Agent to Super Admin later?",
+    answer:
+      "Yes. You can upgrade an Agent account to Super Admin at any time. The new pricing will apply immediately.",
   },
   {
-    question: "What happens if I exceed my lead limit?",
-    answer: "We'll notify you when you're approaching your limit. You can either upgrade to a higher plan or purchase additional lead capacity. We never delete your leads or stop your service without warning.",
+    question: "Is pricing per user or per account?",
+    answer:
+      "Agent pricing is per user. Super Admin pricing applies per admin account.",
   },
   {
     question: "Is there a setup fee?",
-    answer: "No, there are no setup fees for any plan. You can start using Caps CRM immediately after signing up. We also offer free data migration assistance to help you get started.",
+    answer:
+      "No, there are no setup fees. You can start using Caps CRM immediately.",
   },
   {
     question: "Do you offer annual billing?",
-    answer: "Yes, we offer a 20% discount when you pay annually. Contact our sales team for custom annual pricing on Professional and Enterprise plans.",
-  },
-  {
-    question: "What's included in the free trial?",
-    answer: "The 14-day free trial includes all Professional plan features so you can experience the full power of Caps CRM. No credit card required to start.",
-  },
-  {
-    question: "Can I get a custom plan for my needs?",
-    answer: "Absolutely. Our Enterprise plan is fully customizable. Contact our sales team to discuss your specific requirements and we'll create a tailored solution for your business.",
+    answer:
+      "Yes, annual billing is available with discounted pricing. Contact our sales team for details.",
   },
 ];
-
 export default function Pricing() {
+  const [agents, setAgents] = useState(1);
+  const [admins, setAdmins] = useState(1);
+
+  const agentCost = agents * 25;
+  const adminCost = admins * 100;
+  const total = agentCost + adminCost;
+
   return (
     <Layout>
-      {/* Hero */}
       <section className="py-20 hero-gradient">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4" data-testid="text-pricing-headline">
-              Simple, Transparent Pricing
-            </h1>
-            <p className="text-lg text-muted-foreground mb-6">
-              Choose the plan that fits your business. All plans include a 14-day free trial. 
-              No credit card required.
-            </p>
-            <Badge variant="secondary" className="text-sm">
-              Save 20% with annual billing
-            </Badge>
-          </div>
+        <div className="container mx-auto px-4 text-center max-w-3xl">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            Simple Role-Based Pricing
+          </h1>
+          <p className="text-lg text-muted-foreground mb-6">
+            Pay only for the role you need. No hidden fees.
+          </p>
+          <Badge variant="secondary">14-Day Free Trial</Badge>
         </div>
       </section>
 
-      {/* Pricing Cards */}
       <section className="py-16">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {plans.map((plan, index) => (
+          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+            {plans.map((plan) => (
               <Card
-                key={index}
-                className={`relative flex flex-col ${plan.popular ? "border-primary shadow-lg" : ""}`}
-                data-testid={`card-pricing-${plan.name.toLowerCase()}`}
+                key={plan.name}
+                className={`relative flex flex-col ${
+                  plan.popular ? "border-primary shadow-lg" : ""
+                }`}
               >
                 {plan.popular && (
                   <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <Badge className="bg-primary text-primary-foreground">Most Popular</Badge>
+                    <Badge className="bg-primary text-primary-foreground">
+                      Most Popular
+                    </Badge>
                   </div>
                 )}
-                <CardHeader className="text-center pb-4">
-                  <div className="h-12 w-12 rounded-md bg-primary/10 flex items-center justify-center mx-auto mb-4">
+
+                <CardHeader className="text-center">
+                  <div className="h-12 w-12 mx-auto rounded-md bg-primary/10 flex items-center justify-center mb-4">
                     <plan.icon className="h-6 w-6 text-primary" />
                   </div>
-                  <CardTitle className="text-xl" data-testid={`text-plan-name-${plan.name.toLowerCase()}`}>{plan.name}</CardTitle>
-                  <CardDescription data-testid={`text-plan-desc-${plan.name.toLowerCase()}`}>{plan.description}</CardDescription>
+                  <CardTitle className="text-xl">{plan.name}</CardTitle>
+                  <CardDescription>{plan.description}</CardDescription>
                   <div className="pt-4">
-                    {plan.price ? (
-                      <div data-testid={`text-plan-price-${plan.name.toLowerCase()}`}>
-                        <span className="text-4xl font-bold">${plan.price}</span>
-                        <span className="text-muted-foreground">/month</span>
-                      </div>
-                    ) : (
-                      <div className="text-2xl font-bold" data-testid={`text-plan-price-${plan.name.toLowerCase()}`}>Custom Pricing</div>
-                    )}
+                    <span className="text-4xl font-bold">${plan.price}</span>
+                    <span className="text-muted-foreground">/month</span>
                   </div>
                 </CardHeader>
-                <CardContent className="flex-1 flex flex-col">
+
+                <CardContent className="flex flex-col flex-1">
                   <ul className="space-y-3 flex-1">
-                    {plan.features.map((feature, i) => (
-                      <li key={i} className="flex items-center gap-2 text-sm">
-                        {feature.included ? (
-                          <Check className="h-4 w-4 text-primary flex-shrink-0" />
+                    {plan.features.map((f, i) => (
+                      <li key={i} className="flex gap-2 text-sm">
+                        {f.included ? (
+                          <Check className="h-4 w-4 text-primary" />
                         ) : (
-                          <X className="h-4 w-4 text-muted-foreground flex-shrink-0" />
+                          <X className="h-4 w-4 text-muted-foreground" />
                         )}
-                        <span className={feature.included ? "" : "text-muted-foreground"}>
-                          {feature.name}
+                        <span
+                          className={!f.included ? "text-muted-foreground" : ""}
+                        >
+                          {f.name}
                         </span>
                       </li>
                     ))}
                   </ul>
-                  <div className="pt-6">
-                    <Link href="/contact">
-                      <Button
-                        className="w-full"
-                        variant={plan.popular ? "default" : "outline"}
-                        data-testid={`button-pricing-${plan.name.toLowerCase()}`}
-                      >
-                        {plan.price ? "Start Free Trial" : "Contact Sales"}
-                      </Button>
-                    </Link>
-                  </div>
+
+                  <Link href="/contact" className="pt-6">
+                    <Button
+                      className="w-full"
+                      variant={plan.popular ? "default" : "outline"}
+                    >
+                      Start Free Trial
+                    </Button>
+                  </Link>
                 </CardContent>
               </Card>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* Feature Comparison */}
+          <p className="text-center text-sm text-muted-foreground mt-8">
+            Agent pricing is per user. Super Admin pricing is per admin account.
+          </p>
+        </div>
+      </section> 
       <section className="py-16 bg-card">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4" data-testid="text-compare-headline">Compare Plans</h2>
-            <p className="text-muted-foreground">
-              See all features side by side to find the perfect fit for your business.
-            </p>
-          </div>
+          <h2 className="text-3xl font-bold text-center mb-10">
+            Agent vs Super Admin
+          </h2>
+
           <div className="overflow-x-auto">
-            <table className="w-full max-w-5xl mx-auto text-sm" data-testid="table-comparison">
+            <table className="w-full max-w-4xl mx-auto text-sm">
               <thead>
                 <tr className="border-b">
-                  <th className="text-left py-4 px-4 font-semibold">Feature</th>
-                  <th className="text-center py-4 px-4 font-semibold">Starter</th>
-                  <th className="text-center py-4 px-4 font-semibold bg-primary/5">Professional</th>
-                  <th className="text-center py-4 px-4 font-semibold">Enterprise</th>
+                  <th className="text-left py-3 px-4">Feature</th>
+                  <th className="text-center py-3 px-4">Agent</th>
+                  <th className="text-center py-3 px-4 bg-primary/5">
+                    Super Admin
+                  </th>
                 </tr>
               </thead>
               <tbody>
-                <tr className="border-b">
-                  <td className="py-3 px-4">Users</td>
-                  <td className="text-center py-3 px-4">Up to 3</td>
-                  <td className="text-center py-3 px-4 bg-primary/5">Up to 10</td>
-                  <td className="text-center py-3 px-4">Unlimited</td>
-                </tr>
-                <tr className="border-b">
-                  <td className="py-3 px-4">Leads per month</td>
-                  <td className="text-center py-3 px-4">500</td>
-                  <td className="text-center py-3 px-4 bg-primary/5">2,500</td>
-                  <td className="text-center py-3 px-4">Unlimited</td>
-                </tr>
-                <tr className="border-b">
-                  <td className="py-3 px-4">Lead Management</td>
-                  <td className="text-center py-3 px-4"><Check className="h-4 w-4 text-primary mx-auto" /></td>
-                  <td className="text-center py-3 px-4 bg-primary/5"><Check className="h-4 w-4 text-primary mx-auto" /></td>
-                  <td className="text-center py-3 px-4"><Check className="h-4 w-4 text-primary mx-auto" /></td>
-                </tr>
-                <tr className="border-b">
-                  <td className="py-3 px-4">Lead Workflow Pipeline</td>
-                  <td className="text-center py-3 px-4"><Check className="h-4 w-4 text-primary mx-auto" /></td>
-                  <td className="text-center py-3 px-4 bg-primary/5"><Check className="h-4 w-4 text-primary mx-auto" /></td>
-                  <td className="text-center py-3 px-4"><Check className="h-4 w-4 text-primary mx-auto" /></td>
-                </tr>
-                <tr className="border-b">
-                  <td className="py-3 px-4">Payment Integration</td>
-                  <td className="text-center py-3 px-4"><X className="h-4 w-4 text-muted-foreground mx-auto" /></td>
-                  <td className="text-center py-3 px-4 bg-primary/5"><Check className="h-4 w-4 text-primary mx-auto" /></td>
-                  <td className="text-center py-3 px-4"><Check className="h-4 w-4 text-primary mx-auto" /></td>
-                </tr>
-                <tr className="border-b">
-                  <td className="py-3 px-4">Central Dispatch Integration</td>
-                  <td className="text-center py-3 px-4"><X className="h-4 w-4 text-muted-foreground mx-auto" /></td>
-                  <td className="text-center py-3 px-4 bg-primary/5"><Check className="h-4 w-4 text-primary mx-auto" /></td>
-                  <td className="text-center py-3 px-4"><Check className="h-4 w-4 text-primary mx-auto" /></td>
-                </tr>
-                <tr className="border-b">
-                  <td className="py-3 px-4">Leads API</td>
-                  <td className="text-center py-3 px-4"><X className="h-4 w-4 text-muted-foreground mx-auto" /></td>
-                  <td className="text-center py-3 px-4 bg-primary/5"><Check className="h-4 w-4 text-primary mx-auto" /></td>
-                  <td className="text-center py-3 px-4"><Check className="h-4 w-4 text-primary mx-auto" /></td>
-                </tr>
-                <tr className="border-b">
-                  <td className="py-3 px-4">AI Chatbot</td>
-                  <td className="text-center py-3 px-4"><X className="h-4 w-4 text-muted-foreground mx-auto" /></td>
-                  <td className="text-center py-3 px-4 bg-primary/5"><Check className="h-4 w-4 text-primary mx-auto" /></td>
-                  <td className="text-center py-3 px-4">Custom Training</td>
-                </tr>
-                <tr className="border-b">
-                  <td className="py-3 px-4">Phone Validator</td>
-                  <td className="text-center py-3 px-4"><X className="h-4 w-4 text-muted-foreground mx-auto" /></td>
-                  <td className="text-center py-3 px-4 bg-primary/5"><Check className="h-4 w-4 text-primary mx-auto" /></td>
-                  <td className="text-center py-3 px-4"><Check className="h-4 w-4 text-primary mx-auto" /></td>
-                </tr>
-                <tr className="border-b">
-                  <td className="py-3 px-4">Real-time Notifications</td>
-                  <td className="text-center py-3 px-4"><Check className="h-4 w-4 text-primary mx-auto" /></td>
-                  <td className="text-center py-3 px-4 bg-primary/5"><Check className="h-4 w-4 text-primary mx-auto" /></td>
-                  <td className="text-center py-3 px-4"><Check className="h-4 w-4 text-primary mx-auto" /></td>
-                </tr>
-                <tr className="border-b">
-                  <td className="py-3 px-4">Custom Branding</td>
-                  <td className="text-center py-3 px-4"><X className="h-4 w-4 text-muted-foreground mx-auto" /></td>
-                  <td className="text-center py-3 px-4 bg-primary/5"><X className="h-4 w-4 text-muted-foreground mx-auto" /></td>
-                  <td className="text-center py-3 px-4"><Check className="h-4 w-4 text-primary mx-auto" /></td>
-                </tr>
-                <tr className="border-b">
-                  <td className="py-3 px-4">Support</td>
-                  <td className="text-center py-3 px-4">Email</td>
-                  <td className="text-center py-3 px-4 bg-primary/5">Priority Email & Phone</td>
-                  <td className="text-center py-3 px-4">Dedicated Manager</td>
-                </tr>
+                {[
+                  ["Access Scope", "Own only", "All system data"],
+                  ["Lead Assignment", false, true],
+                  ["Charge Payments", false, true],
+                  ["Central Dispatch", true, true],
+                  ["Notifications", false, true],
+                  ["Change Logs", false, true],
+                  ["Admin Controls", false, true],
+                ].map(([label, a, s], i) => (
+                  <tr key={i} className="border-b">
+                    <td className="py-3 px-4">{label}</td>
+                    <td className="text-center">
+                      {a === true ? (
+                        <Check className="mx-auto h-4 w-4 text-primary" />
+                      ) : a === false ? (
+                        <X className="mx-auto h-4 w-4 text-muted-foreground" />
+                      ) : (
+                        a
+                      )}
+                    </td>
+                    <td className="text-center bg-primary/5">
+                      {s === true ? (
+                        <Check className="mx-auto h-4 w-4 text-primary" />
+                      ) : (
+                        s
+                      )}
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
         </div>
       </section>
+      <section className="py-16 bg-muted/30">
+        <div className="container mx-auto px-4 max-w-4xl">
+          <h2 className="text-3xl font-bold text-center mb-4">
+            Monthly Cost Calculator
+          </h2>
+          <p className="text-center text-muted-foreground mb-10">
+            Estimate your monthly cost based on users and admin accounts.
+          </p>
 
-      {/* FAQs */}
+          <Card>
+            <CardContent className="p-8 space-y-8"> 
+              <div>
+                <div className="flex justify-between mb-2">
+                  <label className="font-medium">
+                    Agent Users
+                  </label>
+                  <span className="font-semibold">
+                    {agents} × $25
+                  </span>
+                </div>
+                <input
+                  type="range"
+                  min={0}
+                  max={50}
+                  value={agents}
+                  onChange={(e) => setAgents(Number(e.target.value))}
+                  className="w-full"
+                />
+              </div>
+ 
+              <div>
+                <div className="flex justify-between mb-2">
+                  <label className="font-medium">
+                    Super Admin Accounts
+                  </label>
+                  <span className="font-semibold">
+                    {admins} × $100
+                  </span>
+                </div>
+                <input
+                  type="range"
+                  min={0}
+                  max={10}
+                  value={admins}
+                  onChange={(e) => setAdmins(Number(e.target.value))}
+                  className="w-full"
+                />
+              </div>
+ 
+              <div className="border-t pt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <div>
+                  <p className="text-sm text-muted-foreground">
+                    Estimated Monthly Total
+                  </p>
+                  <p className="text-4xl font-bold text-primary">
+                    ${total}/month
+                  </p>
+                </div>
+
+                <Link href="/contact">
+                  <Button size="lg" className="gap-2">
+                    Get Started <ArrowRight className="h-4 w-4" />
+                  </Button>
+                </Link>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
+ 
       <section className="py-16">
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4" data-testid="text-faq-headline">Frequently Asked Questions</h2>
-            <p className="text-muted-foreground">
-              Have questions? We've got answers.
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-            {faqs.map((faq, index) => (
-              <Card key={index} data-testid={`card-faq-${index}`}>
-                <CardContent className="p-6">
-                  <div className="flex gap-3">
-                    <HelpCircle className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
-                    <div>
-                      <h3 className="font-semibold mb-2" data-testid={`text-faq-question-${index}`}>{faq.question}</h3>
-                      <p className="text-sm text-muted-foreground" data-testid={`text-faq-answer-${index}`}>{faq.answer}</p>
-                    </div>
+        <div className="container mx-auto px-4 max-w-4xl">
+          <h2 className="text-3xl font-bold text-center mb-10">
+            Frequently Asked Questions
+          </h2>
+          <div className="grid md:grid-cols-2 gap-6">
+            {faqs.map((faq, i) => (
+              <Card key={i}>
+                <CardContent className="p-6 flex gap-3">
+                  <HelpCircle className="h-5 w-5 text-primary mt-1" />
+                  <div>
+                    <h3 className="font-semibold mb-2">{faq.question}</h3>
+                    <p className="text-sm text-muted-foreground">
+                      {faq.answer}
+                    </p>
                   </div>
                 </CardContent>
               </Card>
@@ -316,31 +308,18 @@ export default function Pricing() {
           </div>
         </div>
       </section>
-
-      {/* CTA */}
-      <section className="py-20 bg-primary">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-primary-foreground" data-testid="text-pricing-cta-headline">
-            Ready to Get Started?
-          </h2>
-          <p className="text-lg text-primary-foreground/80 mb-8 max-w-2xl mx-auto">
-            Start your 14-day free trial today. No credit card required. 
-            Experience the full power of Caps CRM risk-free.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link href="/contact">
-              <Button size="lg" variant="secondary" className="w-full sm:w-auto gap-2" data-testid="button-pricing-cta-trial">
-                Start Free Trial
-                <ArrowRight className="h-4 w-4" />
-              </Button>
-            </Link>
-            <Link href="/contact">
-              <Button size="lg" variant="outline" className="w-full sm:w-auto bg-transparent border-primary-foreground/30 text-primary-foreground" data-testid="button-pricing-cta-sales">
-                Contact Sales
-              </Button>
-            </Link>
-          </div>
-        </div>
+      <section className="py-20 bg-gradient-to-bl from-orange-400 to-blue-400 text-center">
+        <h2 className="text-4xl font-bold text-primary-foreground mb-4">
+          Ready to Get Started?
+        </h2>
+        <p className="text-primary-foreground/80 mb-8">
+          Start your free trial today. No credit card required.
+        </p>
+        <Link href="/contact">
+          <Button size="lg" variant="secondary" className="gap-2">
+            Start Free Trial <ArrowRight className="h-4 w-4" />
+          </Button>
+        </Link>
       </section>
     </Layout>
   );

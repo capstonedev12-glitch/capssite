@@ -83,11 +83,9 @@ app.use((req, res, next) => {
     await setupVite(httpServer, app);
   }
 
-  // Node 24 Windows compatible listen
   const port = parseInt(process.env.PORT || "5000", 10);
-  const host = process.env.HOST || "localhost"; // use "localhost" instead of 127.0.0.1
+  const host = process.env.HOST || "localhost"; 
 
-  // Remove reusePort for Windows
   httpServer.listen(port, host, () => {
     log(`serving on http://${host}:${port}`);
   });

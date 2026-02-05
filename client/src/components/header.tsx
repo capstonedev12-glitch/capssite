@@ -28,34 +28,34 @@ export function Header() {
         </Link>
 
      <nav
-  className="hidden lg:flex items-center gap-4 px-4 py-2 rounded-b-md"
-  data-testid="nav-desktop"
->
-  {navLinks.map((link) => {
-    const isActive = location === link.href;
-    return (
-      <Link key={link.href} href={link.href}>
-        <span className="relative inline-block">
-          <Button
-            size="sm"
-            variant="ghost"
-            className={`
-              px-2 py-1
-              ${isActive ? "text-[#f36500e0] font-semibold" : "text-black"}
-              hover:text-primary
-            `}
-            data-testid={`link-nav-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
-          >
-            {link.label}
-          </Button>
-          {isActive && (
-            <span className="absolute left-0 right-0 -bottom-0 h-0.5 bg-[#f36500e0]  rounded-full" />
-          )}
-        </span>
-      </Link>
-    );
-  })}
-</nav>
+          className="hidden lg:flex items-center gap-4 px-4 py-2 rounded-b-md"
+          data-testid="nav-desktop"
+        >
+          {navLinks.map((link) => {
+            const isActive = location === link.href;
+            return (
+              <Link key={link.href} href={link.href}>
+                <span className="relative inline-block">
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    className={`
+                      px-2 py-1
+                      ${isActive ? "text-[#f36500e0] font-semibold" : "text-black dark:text-white"}
+                      hover:text-primary
+                    `}
+                    data-testid={`link-nav-${link.label.toLowerCase().replace(/\s+/g, "-")}`}
+                  >
+                    {link.label}
+                  </Button>
+                  {isActive && (
+                    <span className="absolute left-0 right-0 -bottom-0 h-0.5 bg-[#f36500e0]  rounded-full" />
+                  )}
+                </span>
+              </Link>
+            );
+          })}
+        </nav>
 
 
 

@@ -98,8 +98,7 @@ export default function Contact() {
   };
 
   return (
-    <Layout>
-      {/* Hero */}
+    <Layout> 
       <section className="py-16 hero-gradient">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
@@ -113,8 +112,7 @@ export default function Contact() {
           </div>
         </div>
       </section>
-
-      {/* Contact Options */}
+ 
       <section className="py-12">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
@@ -132,12 +130,10 @@ export default function Contact() {
           </div>
         </div>
       </section>
-
-      {/* Contact Form & Info */}
+ 
       <section className="py-12">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-5 gap-8 max-w-6xl mx-auto">
-            {/* Form */}
+          <div className="grid lg:grid-cols-5 gap-8 max-w-6xl mx-auto"> 
             <div className="lg:col-span-3">
               <Card>
                 <CardHeader>
@@ -324,8 +320,7 @@ export default function Contact() {
                 </CardContent>
               </Card>
             </div>
-
-            {/* Contact Info */}
+ 
             <div className="lg:col-span-2 space-y-6">
               <Card data-testid="card-contact-info">
                 <CardContent className="p-6">
@@ -335,8 +330,8 @@ export default function Contact() {
                       <Mail className="h-5 w-5 text-primary mt-0.5" />
                       <div>
                         <p className="font-medium text-sm">Email</p>
-                        <p className="text-muted-foreground text-sm" data-testid="text-email-support">support@capscrm.com</p>
-                        <p className="text-muted-foreground text-sm" data-testid="text-email-sales">sales@capscrm.com</p>
+                        <p className="text-muted-foreground text-sm" data-testid="text-email-support">support@capscrm.org</p>
+                        <p className="text-muted-foreground text-sm" data-testid="text-email-sales">sales@capscrm.org</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
