@@ -51,13 +51,9 @@ const features = [
     title: "Lead Workflow (Lead → Quote → Order)",
     tagline: "A seamless pipeline from first contact to final delivery",
     description: "Transform how you manage your sales pipeline with our intuitive lead workflow system. Move leads through your funnel with visual clarity and automation.",
-    whatItDoes: [
-      "Visual pipeline with drag-and-drop lead stages",
+    whatItDoes: [ 
       "Automated stage transitions based on actions or time",
       "One-click quote generation from lead details",
-      "Instant order conversion with pre-filled information",
-      "Stage-specific task assignments and reminders",
-      "Pipeline analytics with conversion metrics at each stage",
     ],
     whyItMatters: "Manual handoffs between lead, quote, and order stages create delays and errors. An automated workflow ensures nothing falls through the cracks and your team always knows what to do next.",
     howItHelps: "Streamline your entire sales process from initial inquiry to booked order. Your dispatchers see orders the moment they're confirmed, carriers get assigned automatically, and customers receive real-time updates throughout.",
@@ -70,10 +66,8 @@ const features = [
     description: "Accept payments directly within Caps CRM using industry-leading payment processors. No more chasing checks or juggling multiple payment systems.",
     whatItDoes: [
       "Integrated Authorize.net and Clover payment processing",
-      "One-click payment collection from customer records",
-      "Automated invoicing with payment links",
+      "One-click payment collection from customer records", 
       "Partial payments and deposit handling",
-      "Automatic payment reminders for outstanding balances",
       "Complete transaction history and reconciliation reports",
     ],
     whyItMatters: "Cash flow is the lifeblood of any auto transport business. Delayed payments mean delayed carrier payments, which can damage relationships. Integrated payments accelerate your cash cycle.",
@@ -86,7 +80,7 @@ const features = [
     tagline: "Stay informed the moment something happens",
     description: "Never miss a critical update with instant notifications across all your devices. Know immediately when leads come in, payments process, or orders change status.",
     whatItDoes: [
-      "Push notifications on desktop and mobile",
+      "Push notifications on desktop",
       "Email alerts for high-priority events",
       "Customizable notification preferences by event type",
       "Team-wide broadcasts for important announcements",
@@ -104,8 +98,7 @@ const features = [
     description: "Connect your lead vendors directly to Caps CRM. Receive and process leads in real-time without manual data entry or delayed imports.",
     whatItDoes: [
       "RESTful API for seamless vendor integration",
-      "Support for major auto transport lead providers",
-      "Real-time lead ingestion with instant notifications",
+      "Support for major auto transport lead providers", 
       "Automatic field mapping and data validation",
       "Lead source tracking for ROI analysis",
       "Webhook support for custom integrations",
@@ -121,10 +114,8 @@ const features = [
     description: "Powerful search functionality that finds what you need across leads, orders, customers, and more. Stop wasting time clicking through screens.",
     whatItDoes: [
       "Instant search across all CRM data types",
-      "Search by phone, email, name, order number, or VIN",
-      "Recent search history for quick access",
-      "Advanced filters for refined results",
-      "Keyboard shortcuts for power users",
+      "Search by phone, email, name or order number", 
+      "Advanced filters for refined results", 
       "Search result previews without leaving current page",
     ],
     whyItMatters: "When a customer calls, you need their information immediately. Searching through multiple screens or spreadsheets wastes time and frustrates callers. Global search puts everything at your fingertips.",
@@ -169,7 +160,6 @@ const features = [
 export default function Features() {
   return (
     <Layout>
-      {/* Hero */}
       <section className="py-20 hero-gradient">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
