@@ -1,7 +1,6 @@
 import { Link } from "wouter";
 import { Layout } from "@/components/layout";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button"; 
 import {
   Users,
   ArrowRight,
@@ -10,11 +9,9 @@ import {
   Bell,
   Webhook,
   Search,
-  FileCheck,
-  Shield,
+  FileCheck, 
   CheckCircle,
 } from "lucide-react";
-
 
 const featureVisuals = [
   "/vectors/lead-management.jpg",
@@ -187,8 +184,7 @@ export default function Features() {
           </div>
         </div>
       </section>
-
-      {/* Feature Navigation */}
+ 
       <section className="py-8 border-b sticky top-16 z-40 bg-background/95 backdrop-blur">
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap gap-2 justify-center">
@@ -243,9 +239,9 @@ export default function Features() {
                   <div className={index % 2 === 1 ? "lg:order-1" : ""}>
                     <div className="rounded-xl border bg-card p-4 flex items-center justify-center hover:shadow-lg transition">
                       <img
-                        src={featureVisuals[index]} // single visual
+                        src={featureVisuals[index]}  
                         alt={`${feature.title} visual`}
-                        className="w-full h-auto object-contain" // full width, maintain aspect ratio
+                        className="w-full h-auto object-contain rounded-2xl" 
                       />
                     </div>
                   </div>
