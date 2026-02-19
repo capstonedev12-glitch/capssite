@@ -3,7 +3,7 @@ import { Layout } from "@/components/layout";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"; 
 import { ArrowRight } from "lucide-react";
-
+ 
 const videos = [
   {
     id: 1,
@@ -70,7 +70,6 @@ export default function VideoHub() {
           </div>
         </div>
       </section>
- 
         {activeVideo && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
           <div className="bg-white rounded-lg w-full max-w-3xl p-6 relative">

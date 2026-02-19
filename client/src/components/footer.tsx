@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { Truck, Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin } from "lucide-react";
 
 const footerLinks = {
   product: [

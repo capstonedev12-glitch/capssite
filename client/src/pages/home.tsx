@@ -22,6 +22,7 @@ import {
   Search,
   Lock,
 } from "lucide-react";
+import { useRef, useState } from "react";
 
 const keyFeatures = [
   {
@@ -133,9 +134,22 @@ const painPoints = [
 ];
 
 export default function Home() {
+  const videoRef = useRef(null);
+const [isPlaying, setIsPlaying] = useState(false);
+
+const togglePlay = async () => {
+  const video = videoRef.current;
+  if (!video) return;
+  if (video.paused) {
+    await video.play();
+    setIsPlaying(true);
+  } else {
+    video.pause();
+    setIsPlaying(false);
+  }
+};
   return (
-    <Layout>
-      {/* Hero Section */}
+    <Layout> 
       <section className="relative overflow-hidden hero-gradient">
         <div className="container mx-auto px-4 py-20 lg:py-28">
           <div className="max-w-4xl mx-auto text-center">
@@ -178,12 +192,112 @@ export default function Home() {
                 />
               </div>
             </div>
+            <div className="mt-10">
+            <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-3">
+              {[
+                { icon: Star, title: "4.9/5 Rating", desc: "Auto transport teams" },
+                { icon: Clock, title: "Setup in 24 Hours", desc: "Fast onboarding" },
+                { icon: Shield, title: "Secure by Design", desc: "Tenant isolation" },
+                { icon: CheckCircle, title: "14-Day Trial", desc: "No credit card" },
+              ].map((item, index) => (
+                <div
+                  key={index}
+                  className="flex items-center gap-3 rounded-lg border border-border bg-card/70 backdrop-blur px-4 py-3 shadow-sm"
+                  data-testid={`social-proof-${index}`}
+                >
+                  <div className="h-10 w-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                    <item.icon className="h-5 w-5 text-primary" />
+                  </div>
+                  <div className="leading-tight">
+                    <p className="text-sm font-semibold">{item.title}</p>
+                    <p className="text-xs text-muted-foreground">{item.desc}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
           </div>
         </div>
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(45%_40%_at_50%_60%,hsl(var(--primary)/0.12),transparent)]" />
-      </section>
+      </section> 
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center mb-12">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+              <Bot className="h-4 w-4" />
+              Product Demo
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              See Caps CRM in 60 Seconds
+            </h2>
+            <p className="text-lg text-muted-foreground">
+              Watch how brokers manage leads, quotes, orders, dispatch, and payments — all from one clean dashboard.
+            </p>
+          </div>
 
-      {/* Problem Statement */}
+          <div className="max-w-5xl mx-auto">
+            <div className="relative rounded-2xl overflow-hidden border border-border bg-card shadow-xl"> 
+             <div className="relative w-full  rounded-2xl overflow-hidden">
+              <video
+                ref={videoRef}
+                className="w-full h-full "
+                playsInline
+                preload="metadata"
+                poster="/dashboard.png"
+                onPlay={() => setIsPlaying(true)}
+                onPause={() => setIsPlaying(false)}
+                data-testid="video-demo"
+              >
+                <source src="/videos/Demo.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+              </video>
+
+              <button
+                onClick={togglePlay}
+                className="absolute inset-0 flex items-center justify-center bg-black/10 hover:bg-black/20 transition"
+                aria-label={isPlaying ? "Pause video" : "Play video"}
+              >
+                <div className="w-16 h-16 rounded-full bg-white/90 flex items-center justify-center shadow-lg backdrop-blur-md">
+                  {isPlaying ? (
+                    <div className="flex gap-2">
+                      <div className="w-2 h-6 bg-black rounded"></div>
+                      <div className="w-2 h-6 bg-black rounded"></div>
+                    </div>
+                  ) : (
+                    <div
+                      className="w-0 h-0 ml-1"
+                      style={{
+                        borderTop: "12px solid transparent",
+                        borderBottom: "12px solid transparent",
+                        borderLeft: "18px solid black",
+                      }}
+                    />
+                  )}
+                </div>
+              </button>
+            </div>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+              <Link href="/contact">
+                <Button size="lg" className="gap-2">
+                  Book a Demo
+                  <ArrowRight className="h-4 w-4" />
+                </Button>
+              </Link>
+
+              <Link href="/features">
+                <Button size="lg" variant="outline">
+                  Explore Features
+                </Button>
+              </Link>
+            </div>
+
+            <p className="text-center text-sm text-muted-foreground mt-4">
+              Want a guided walkthrough? Book a live demo and we’ll set it up with your workflow.
+            </p>
+          </div>
+        </div>
+      </section> 
       <section className="py-20 bg-card">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-12">
@@ -211,8 +325,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Solution Overview */}
+ 
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-16">
@@ -247,8 +360,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      {/* Why Choose Caps CRM */}
+ 
       <section className="py-20 bg-card">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-16">
@@ -288,7 +400,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
             {howItWorks.map((step, index) => (
               <div key={index} className="text-center" data-testid={`step-item-${index}`}>
-                <div className="text-5xl font-bold text-primary/20 mb-4" data-testid={`text-step-number-${index}`}>{step.step}</div>
+                <div className="text-5xl font-bold text-primary/90 mb-4" data-testid={`text-step-number-${index}`}>{step.step}</div>
                 <h3 className="text-lg font-semibold mb-2" data-testid={`text-step-title-${index}`}>{step.title}</h3>
                 <p className="text-muted-foreground text-sm" data-testid={`text-step-desc-${index}`}>{step.description}</p>
               </div>

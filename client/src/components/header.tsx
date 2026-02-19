@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/theme-toggle";
-import { Menu, X, Truck } from "lucide-react";
+import { Menu, X} from "lucide-react";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -10,7 +10,7 @@ const navLinks = [
   { href: "/pricing", label: "Pricing" },
   { href: "/knowledge-hub", label: "Knowledge Hub" },
   { href: "/security", label: "Security" },
-  { href: "/contact", label: "Contact" },
+  { href: "/contact", label: "Contact Us" },
   { href: "/about", label: "About" },
 ];
 

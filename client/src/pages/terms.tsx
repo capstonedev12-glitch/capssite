@@ -121,7 +121,7 @@ export default function Terms() {
               </p>
 
               <h2>7. Data Ownership</h2>
-              
+
               <h3>7.1 Your Data</h3>
               <p>
                 You retain all rights to data you input into the Service ("Your Data"). You grant us a limited 
@@ -161,9 +161,19 @@ export default function Terms() {
 
               <h3>11.1 Termination by You</h3>
               <p>
-                You may cancel your subscription at any time through your account settings or by contacting support. 
-                Cancellation takes effect at the end of your current billing period. You will continue to have access 
-                until the end of that period.
+                You may cancel your subscription at any time through your account settings or by contacting support.
+                Unless otherwise stated in your plan, cancellation will take effect at the end of your current billing period.
+                You will continue to have access to the Service until the end of that period.
+              </p>
+              <p>
+                To ensure your subscription is not renewed for the next billing cycle, you must provide cancellation notice
+                at least <strong>seven (7) days</strong> before your next billing date for monthly subscriptions, or
+                <strong> thirty (30) days</strong> before the end of an annual subscription term.
+              </p>
+              <p>
+                You remain responsible for all fees and charges incurred up to and including the effective cancellation date.
+                Except where required by applicable law, all subscription fees are <strong>non-refundable</strong>, and we do not
+                provide refunds or credits for partial billing periods, unused time, downgrades, or unused features.
               </p>
 
               <h3>11.2 Termination by Us</h3>
@@ -171,15 +181,22 @@ export default function Terms() {
               <ul>
                 <li>You breach these Terms</li>
                 <li>Your account is past due for more than 30 days</li>
-                <li>You engage in fraudulent or illegal activity</li>
+                <li>You engage in fraudulent, abusive, or illegal activity</li>
                 <li>Continued service would violate applicable laws</li>
+                <li>Your use of the Service creates a security risk, operational risk, or legal exposure for Caps CRM</li>
               </ul>
+              <p>
+                If we terminate or suspend your account due to a violation of these Terms or non-payment, you remain responsible
+                for any unpaid amounts due up to the termination date.
+              </p>
 
               <h3>11.3 Effect of Termination</h3>
               <p>
-                Upon termination, your right to use the Service ceases immediately. We may delete Your Data after 
-                a 30-day grace period unless retention is required by law.
+                Upon termination, your right to use the Service ceases immediately (or at the end of your current billing period
+                if you canceled in accordance with Section 11.1). We may delete Your Data after a 30-day grace period unless
+                retention is required by law. You are responsible for exporting Your Data prior to deletion.
               </p>
+
 
               <h2>12. Limitation of Liability</h2>
               <p>

@@ -33,8 +33,7 @@ export function log(message: string, source = "express") {
 
   console.log(`${formattedTime} [${source}] ${message}`);
 }
-
-// API request logging middleware
+ 
 app.use((req, res, next) => {
   const start = Date.now();
   const path = req.path;
@@ -82,7 +81,67 @@ app.use((req, res, next) => {
   } else {
     const { setupVite } = await import("./vite");
     await setupVite(httpServer, app);
-  }
+  } 
+  app.use((req: Request, res: Response) => { 
+    if (req.path.startsWith("/api")) {
+      return res.status(404).json({
+        success: false,
+        message: "API route not found",
+        path: req.originalUrl,
+      });
+    }
+
+    return res.status(404).send(`
+      <html>
+        <head>
+          <title>404 - Not Found</title>
+          <style>
+            body {
+              font-family: Arial, sans-serif;
+              margin: 0;
+              height: 100vh;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              background: #0b1220;
+              color: white;
+            }
+            .box {
+              text-align: center;
+              max-width: 520px;
+              padding: 30px;
+              border-radius: 16px;
+              background: #121b2f;
+              box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            }
+            h1 {
+              font-size: 64px;
+              margin: 0;
+            }
+            p {
+              opacity: 0.85;
+              margin-top: 10px;
+            }
+            a {
+              display: inline-block;
+              margin-top: 18px;
+              color: #7dd3fc;
+              text-decoration: none;
+              font-weight: bold;
+            }
+          </style>
+        </head>
+        <body>
+          <div class="box">
+            <h1>404</h1>
+            <p>Page not found:</p>
+            <p><b>${req.originalUrl}</b></p>
+            <a href="/">Go Home</a>
+          </div>
+        </body>
+      </html>
+    `);
+  });
 
   const port = parseInt(process.env.PORT || "5000", 10);
   const host = process.env.HOST || "localhost"; 

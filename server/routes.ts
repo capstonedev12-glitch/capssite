@@ -3,12 +3,10 @@ import type { Server } from "http";
 import { insertContactSchema } from "@shared/schema"; 
 import nodemailer from "nodemailer";
 import { z } from "zod";
- 
 export async function registerRoutes(
   httpServer: Server,
   app: Express
 ): Promise<Server> {
-
 app.post("/api/contact", async (req, res) => {
   try {
     const validatedData = insertContactSchema.parse(req.body);

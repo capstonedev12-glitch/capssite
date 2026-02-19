@@ -8,8 +8,7 @@ import {
   Heart,
   Shield,
   Zap,
-  Users,
-  TrendingUp,
+  Users, 
   ArrowRight,
   CheckCircle,
   Lightbulb,
@@ -69,8 +68,7 @@ const roadmapItems = [
 
 export default function About() {
   return (
-    <Layout>
-      {/* Hero */}
+    <Layout> 
       <section className="py-20 hero-gradient">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center">
