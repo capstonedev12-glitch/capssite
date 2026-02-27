@@ -10,6 +10,7 @@ const videos = [
     title: "Dashboard Overview",
     description: "Get a complete overview of leads, quotes, orders, emails, and active users in one place.",
     url: "/videos/Dashboard.mp4",
+    
   },
   {
     id: 2,

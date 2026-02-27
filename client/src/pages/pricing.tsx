@@ -22,7 +22,7 @@ const plans = [
   {
     name: "Agent",
     description: "For dispatchers & sales agents",
-    price: 25,
+    price: 35,
     icon: Users,
     popular: false,
     features: [
@@ -80,7 +80,7 @@ export default function Pricing() {
   const [agents, setAgents] = useState(1);
   const [admins, setAdmins] = useState(1);
 
-  const agentCost = agents * 25;
+  const agentCost = agents * 35;
   const adminCost = admins * 100;
   const total = agentCost + adminCost;
 
@@ -233,7 +233,7 @@ export default function Pricing() {
                     Agent Users
                   </label>
                   <span className="font-semibold">
-                    {agents} × $25
+                    {agents} × $35
                   </span>
                 </div>
                 <input

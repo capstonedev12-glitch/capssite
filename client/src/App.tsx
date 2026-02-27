@@ -12,6 +12,7 @@ import Contact from "@/pages/contact";
 import Privacy from "@/pages/privacy";
 import Terms from "@/pages/terms";
 import Security from "@/pages/security";
+import FAQ from "@/pages/FAQ";  
 import NotFound from "@/pages/not-found";
 
 function Router() {
@@ -26,6 +27,7 @@ function Router() {
       <Route path="/privacy" component={Privacy} />
       <Route path="/terms" component={Terms} />
       <Route path="/security" component={Security} />
+      <Route path="/faqs" component={FAQ}/>
       <Route component={NotFound} />
     </Switch>
   );

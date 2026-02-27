@@ -12,6 +12,7 @@ const navLinks = [
   { href: "/security", label: "Security" },
   { href: "/contact", label: "Contact Us" },
   { href: "/about", label: "About" },
+  { href: "/faqs", label: "FAQs" },
 ];
 
 export function Header() {

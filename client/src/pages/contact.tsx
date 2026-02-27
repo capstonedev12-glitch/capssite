@@ -54,7 +54,7 @@ const contactOptions = [
     description: "Get help with your existing Caps CRM account",
   },
 ];
-
+ 
 export default function Contact() {
   const { toast } = useToast();
   

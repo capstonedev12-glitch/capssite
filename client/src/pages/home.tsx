@@ -237,7 +237,7 @@ const togglePlay = async () => {
 
           <div className="max-w-5xl mx-auto">
             <div className="relative rounded-2xl overflow-hidden border border-border bg-card shadow-xl"> 
-             <div className="relative w-full  rounded-2xl overflow-hidden">
+             <div className="relative w-full rounded-2xl overflow-hidden">
               <video
                 ref={videoRef}
                 className="w-full h-full "
@@ -407,9 +407,71 @@ const togglePlay = async () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> 
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          
+          <div className="max-w-3xl mx-auto text-center mb-14">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+              <Globe className="h-4 w-4" />
+              Seamless Integrations
+            </div>
 
-      {/* Security Section */}
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Connect With The Tools You Already Use
+            </h2>
+
+            <p className="text-lg text-muted-foreground">
+              Caps CRM integrates directly with industry-leading platforms to streamline 
+              payments, dispatching, and location services.
+            </p>
+          </div>
+      
+          <div className="max-w-5xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 items-center">
+            
+            <div className="flex justify-center">
+              <img
+                src="/logos/maps.png"
+                alt="Google Maps API"
+                className="h-14 object-contain grayscale-[70%] opacity-70 hover:grayscale-0 hover:opacity-100 transition duration-300"
+              />
+            </div>
+      
+            <div className="flex justify-center">
+              <img
+                src="/logos/authorize.png"
+                alt="Authorize.net"
+                className="h-14 object-contain grayscale-[70%] opacity-70 hover:grayscale-0 hover:opacity-100 transition duration-300"
+              />
+            </div>
+      
+            <div className="flex justify-center">
+              <img
+                src="/logos/central.png"
+                alt="Central Dispatch"
+                className="h-14 object-contain grayscale-[70%] opacity-70 hover:grayscale-0 hover:opacity-100 transition duration-300"
+              />
+            </div>
+      
+            <div className="flex justify-center">
+              <img
+                src="/logos/clover.png"
+                alt="Clover"
+                className="h-14 object-contain grayscale-[70%] opacity-70 hover:grayscale-0 hover:opacity-100 transition duration-300"
+              />
+            </div>
+
+          </div>
+      
+          <div className="text-center mt-10">
+            <p className="text-sm text-muted-foreground">
+              More integrations coming soon — built specifically for auto transport businesses.
+            </p>
+          </div>
+
+        </div>
+      </section>
+ 
       <section className="py-20 bg-card">
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center max-w-5xl mx-auto">
