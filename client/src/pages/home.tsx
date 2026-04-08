@@ -179,7 +179,7 @@ const togglePlay = async () => {
               </Link>
             </div>
             <p className="text-sm text-muted-foreground mt-4">
-              No credit card required • 14-day free trial • Cancel anytime
+              No credit card required • 7-day free trial • Cancel anytime
             </p>
             <div className="mt-10 relative">
               <div className="absolute inset-0 -z-10 blur-3xl bg-primary/20 rounded-full" />
@@ -198,7 +198,7 @@ const togglePlay = async () => {
                 { icon: Star, title: "4.9/5 Rating", desc: "Auto transport teams" },
                 { icon: Clock, title: "Setup in 24 Hours", desc: "Fast onboarding" },
                 { icon: Shield, title: "Secure by Design", desc: "Tenant isolation" },
-                { icon: CheckCircle, title: "14-Day Trial", desc: "No credit card" },
+                { icon: CheckCircle, title: "7-Day Trial", desc: "No credit card" },
               ].map((item, index) => (
                 <div
                   key={index}
@@ -410,7 +410,6 @@ const togglePlay = async () => {
       </section> 
       <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
-          
           <div className="max-w-3xl mx-auto text-center mb-14">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
               <Globe className="h-4 w-4" />

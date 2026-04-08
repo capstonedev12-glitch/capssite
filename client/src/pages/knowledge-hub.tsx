@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { Layout } from "@/components/layout";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"; 
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight } from "lucide-react";
- 
+
 const videos = [
   {
     id: 1,
@@ -30,6 +30,12 @@ const videos = [
     description: "Post loads, assign carriers, and dispatch orders directly from the CRM with a single click.",
     url: "/videos/OrderDetails.mp4",
   },
+  {
+    id: 5,
+    title: "Leads Source Report Tutorial",
+    description: "Check Every Lead Vendor Cost and Converstion Rate with just One-Click.",
+    url:"/videos/cost_report.mp4"
+  }
 ];
 
 export default function VideoHub() {

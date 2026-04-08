@@ -19,11 +19,11 @@ const faqs = [
     answer:
       "Caps CRM is designed for auto transport brokers, dispatchers, and logistics companies looking to streamline operations and improve efficiency.",
   },
-  {
-    question: "Does Caps CRM support mobile devices?",
-    answer:
-      "Yes. Caps CRM works on all modern browsers and a dedicated mobile app experience is currently in development.",
-  },
+  // {
+  //   question: "Does Caps CRM support mobile devices?",
+  //   answer:
+  //     "Yes. Caps CRM works on all modern browsers and a dedicated mobile app experience is currently in development.",
+  // },
   {
     question: "Can I migrate my existing data?",
     answer:
@@ -39,11 +39,11 @@ const faqs = [
     answer:
       "Yes, we provide 24/7 support via email and chat to help you whenever you need assistance.",
   },
-  {
-    question: "Is there a free trial available?",
-    answer:
-      "Yes. You can start a free trial with full access to all features to evaluate Caps CRM risk-free.",
-  },
+  // {
+  //   question: "Is there a free trial available?",
+  //   answer:
+  //     "Yes. You can start a free trial with full access to all features to evaluate Caps CRM risk-free.",
+  // },
 ];
 
 export default function FAQ() {

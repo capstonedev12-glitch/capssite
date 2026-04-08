@@ -18,7 +18,7 @@ import {
   Cloud,
   FileCheck,
 } from "lucide-react";
- 
+
 const securityFeatures = [
   {
     icon: Lock,
@@ -270,8 +270,6 @@ export default function Security() {
           </div>
         </div>
       </section>
-
-      {/* Security Practices */}
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-12">
@@ -291,7 +289,6 @@ export default function Security() {
         </div>
       </section>
 
-      {/* Compliance */}
       <section className="py-20 bg-card">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto text-center mb-12">

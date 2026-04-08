@@ -180,7 +180,7 @@ export default function Terms() {
               <p>We may suspend or terminate your access to the Service immediately if:</p>
               <ul>
                 <li>You breach these Terms</li>
-                <li>Your account is past due for more than 30 days</li>
+                <li>Your account is past due for more than 3 days</li>
                 <li>You engage in fraudulent, abusive, or illegal activity</li>
                 <li>Continued service would violate applicable laws</li>
                 <li>Your use of the Service creates a security risk, operational risk, or legal exposure for Caps CRM</li>

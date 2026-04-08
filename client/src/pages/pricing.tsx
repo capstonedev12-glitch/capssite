@@ -22,7 +22,7 @@ const plans = [
   {
     name: "Agent",
     description: "For dispatchers & sales agents",
-    price: 35,
+    price: 40,
     icon: Users,
     popular: false,
     features: [
@@ -39,7 +39,7 @@ const plans = [
   {
     name: "Super Admin",
     description: "Full system control for owners & managers",
-    price: 100,
+    price: 150,
     icon: Building2,
     popular: false,
     features: [
@@ -75,13 +75,18 @@ const faqs = [
     answer:
       "Yes, annual billing is available with discounted pricing. Contact our sales team for details.",
   },
+  {
+    question: "Do you offer custom API integrations or third-party integrations?",
+    answer:
+      "Yes. Custom API development or third-party integrations that are not included in the standard Caps CRM features are available at an additional cost. Pricing depends on the scope and complexity of the integration.",
+  },
 ];
 export default function Pricing() {
   const [agents, setAgents] = useState(1);
   const [admins, setAdmins] = useState(1);
 
-  const agentCost = agents * 35;
-  const adminCost = admins * 100;
+  const agentCost = agents * 40;
+  const adminCost = admins * 150;
   const total = agentCost + adminCost;
 
   return (
@@ -233,7 +238,7 @@ export default function Pricing() {
                     Agent Users
                   </label>
                   <span className="font-semibold">
-                    {agents} × $35
+                    {agents} × $40
                   </span>
                 </div>
                 <input
@@ -252,7 +257,7 @@ export default function Pricing() {
                     Super Admin Accounts
                   </label>
                   <span className="font-semibold">
-                    {admins} × $100
+                    {admins} × $150
                   </span>
                 </div>
                 <input
@@ -286,28 +291,32 @@ export default function Pricing() {
         </div>
       </section>
  
-      <section className="py-16">
-        <div className="container mx-auto px-4 max-w-4xl">
-          <h2 className="text-3xl font-bold text-center mb-10">
-            Frequently Asked Questions
-          </h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            {faqs.map((faq, i) => (
-              <Card key={i}>
-                <CardContent className="p-6 flex gap-3">
-                  <HelpCircle className="h-5 w-5 text-primary mt-1" />
-                  <div>
-                    <h3 className="font-semibold mb-2">{faq.question}</h3>
-                    <p className="text-sm text-muted-foreground">
-                      {faq.answer}
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
+   <section className="py-16">
+  <div className="container mx-auto px-4 max-w-4xl">
+    <h2 className="text-3xl font-bold text-center mb-10">
+      Frequently Asked Questions
+    </h2>
+
+    <div className="grid md:grid-cols-2 gap-6">
+      {faqs.map((faq, i) => (
+        <Card
+          key={i}
+          className={i === 4 ? "md:col-span-2" : ""}
+        >
+          <CardContent className="p-6 flex gap-3">
+            <HelpCircle className="h-5 w-5 text-primary mt-1" />
+            <div>
+              <h3 className="font-semibold mb-2">{faq.question}</h3>
+              <p className="text-sm text-muted-foreground">
+                {faq.answer}
+              </p>
+            </div>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  </div>
+</section>
       <section className="py-20 bg-gradient-to-bl from-orange-400 to-blue-400 text-center">
         <h2 className="text-4xl font-bold text-primary-foreground mb-4">
           Ready to Get Started?
